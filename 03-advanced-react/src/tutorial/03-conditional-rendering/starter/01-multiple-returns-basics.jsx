@@ -1,6 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const MultipleReturnsBasics = () => {
-  return <h2>Multiple Returns Basics</h2>;
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
 };
 export default MultipleReturnsBasics;
