@@ -1,15 +1,20 @@
 import React, { useReducer } from "react";
 import { data } from "../../../data";
 
-const reducer = (state, action) => {
-  if (action.type === "CLEAR_LIST") {
-    return { ...state, people: [] };
-  }
-  // return state;
-  throw new Error(`No matching "${action.type}" - action type`);
-};
 const defaultState = {
   people: data,
+};
+
+const reducer = (state, action) => {
+  if (action.type === CLEAR_LIST) {
+    return { ...state, people: [] };
+  }
+  if (action.type === RESET_LIST) {
+    return { ...state, people: data };
+  }
+
+  // return state;
+  throw new Error(`No matching "${action.type}" - action type`);
 };
 
 const CLEAR_LIST = "CLEAR_LIST";
@@ -30,7 +35,7 @@ const ReducerBasics = () => {
 
   const resetList = () => {
     // setPeople(data);
-    dispatch({ type: "" });
+    dispatch({ type: RESET_LIST });
   };
 
   return (
